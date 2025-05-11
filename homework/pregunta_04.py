@@ -5,6 +5,8 @@ solo puede utilizar las funciones y librerias basicas de python. No puede
 utilizar pandas, numpy o scipy.
 """
 
+import csv
+
 
 def pregunta_04():
     """
@@ -26,3 +28,26 @@ def pregunta_04():
      ('12', 3)]
 
     """
+    months = {
+        "01": 0,
+        "02": 0,
+        "03": 0,
+        "04": 0,
+        "05": 0,
+        "06": 0,
+        "07": 0,
+        "08": 0,
+        "09": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0,
+    }
+    with open("files/input/data.csv", "r", newline="") as archivo_csv:
+        lector = csv.reader(archivo_csv)
+        for fila in lector:
+            month = fila[0].split("\t")[2].split("-")[1]
+            if month in months:
+                months[month] += 1
+    lista = [(month, count) for month, count in months.items() if count > 0]
+    lista.sort()
+    return lista
