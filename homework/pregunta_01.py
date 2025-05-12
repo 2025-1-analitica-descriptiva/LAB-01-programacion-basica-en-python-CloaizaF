@@ -18,7 +18,7 @@ def pregunta_01():
     """
     suma = 0
     with open("files/input/data.csv", "r", newline="") as archivo_csv:
-        lector = csv.reader(archivo_csv)
+        lector = csv.reader(archivo_csv, delimiter="\t")
         for fila in lector:
-            suma += int(fila[0].split("\t")[1])
+            suma += int(fila[1])
     return suma

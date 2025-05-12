@@ -20,13 +20,12 @@ def pregunta_05():
     dic = {}
     lista = []
     with open("files/input/data.csv", "r", newline="") as archivo_csv:
-        lector = csv.reader(archivo_csv)
+        lector = csv.reader(archivo_csv, delimiter="\t")
         for fila in lector:
-            listaExtraida = fila[0].split("\t")
-            if listaExtraida[0] in dic:
-                dic[listaExtraida[0]].append(int(listaExtraida[1]))
+            if fila[0] in dic:
+                dic[fila[0]].append(int(fila[1]))
             else:
-                dic[listaExtraida[0]] = [int(listaExtraida[1]), int(listaExtraida[1])]
+                dic[fila[0]] = [int(fila[1]), int(fila[1])]
     for key in dic:
         lista.append((key, max(dic[key]), min(dic[key])))
     lista.sort()

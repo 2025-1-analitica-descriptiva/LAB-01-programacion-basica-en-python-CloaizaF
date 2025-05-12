@@ -5,6 +5,8 @@ solo puede utilizar las funciones y librerias basicas de python. No puede
 utilizar pandas, numpy o scipy.
 """
 
+import csv
+
 
 def pregunta_10():
     """
@@ -20,3 +22,9 @@ def pregunta_10():
 
 
     """
+    lista = []
+    with open("files/input/data.csv", "r", newline="") as archivo_csv:
+        lector = csv.reader(archivo_csv, delimiter="\t")
+        for fila in lector:
+            lista.append((fila[0], len(fila[3].split(",")), len(fila[4].split(","))))
+    return lista

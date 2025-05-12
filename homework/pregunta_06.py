@@ -31,13 +31,10 @@ def pregunta_06():
     dic = {}
     lista = []
     with open("files/input/data.csv", "r", newline="") as archivo_csv:
-        lector = csv.reader(archivo_csv)
+        lector = csv.reader(archivo_csv, delimiter='\t')
         for fila in lector:
-            for indice in range(2, len(fila)):
-                letra = fila[indice]
-                if "\t" in letra:
-                    letra = letra.split("\t")[1]
-                if len(letra) > 1:
+            letras = fila[4].split(",")
+            for letra in letras:
                     clave, valor = letra.split(":")
                     if clave in dic:
                         dic[clave].append(int(valor))

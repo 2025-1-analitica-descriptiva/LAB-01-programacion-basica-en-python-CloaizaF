@@ -43,9 +43,9 @@ def pregunta_04():
         "12": 0,
     }
     with open("files/input/data.csv", "r", newline="") as archivo_csv:
-        lector = csv.reader(archivo_csv)
+        lector = csv.reader(archivo_csv, delimiter="\t")
         for fila in lector:
-            month = fila[0].split("\t")[2].split("-")[1]
+            month = fila[2].split("-")[1]
             if month in months:
                 months[month] += 1
     lista = [(month, count) for month, count in months.items() if count > 0]
